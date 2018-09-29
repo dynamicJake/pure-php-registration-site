@@ -3,7 +3,7 @@
 
 <div id="Menu">
 	<a href="index.php" title="Home Page">Home</a><br />
-	<?php # Script 18.2 - footer.html
+	<?php # Script 18.2 - footer.php
 	// This page completes the HTML template.
 
 	// Display links based upon the login status:
@@ -14,7 +14,7 @@
 	';
 
 		// Add links if the user is an administrator:
-		if ($_SESSION['user_level'] == 1) {
+		if ($_SESSION['user_level'] == 2) {
 			echo '<a href="view_users.php" title="View All Users">View Users</a><br />
 		<a href="#">Some Admin Page</a><br />
 		';

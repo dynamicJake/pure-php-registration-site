@@ -10,33 +10,11 @@ include ('includes/header.html');
 
 // Welcome the user (by name if they are logged in):
 echo '<h1>Welcome';
-if (isset($_SESSION['first_name'])) {
-	echo ", {$_SESSION['first_name']}";
+if (isset($_SESSION['user_name'])) {
+	echo ", {$_SESSION['user_name']}";
 }
 echo '!</h1>';
 
-$input = array(
-	0 => "apricot", 
-	1 => "banana", 
-	2 => "cherry", 
-	3 => "dewberry", 
-	4 => "eggplant", 
-	5 => "fig"
-);
-echo "<br>";
-$output_trimmed = array_map("trim", $input);
-// echo "input = $input";
-echo var_dump($output_trimmed);
-if (count($output_trimmed) > 1) {
-	echo '<select>';
-	foreach ($output_trimmed as $key => $value) {
-		echo "<option style=\"text-transform:capitalize;\" value=". $value . "> $value </option>";
-	}
-	echo '</select>';
-}
-foreach ($output_trimmed as $key => $value) {
-	echo "<br>$value<br>";
-}
 ?>
 <p>Spam spam spam spam spam spam
 spam spam spam spam spam spam 
@@ -47,4 +25,4 @@ spam spam spam spam spam spam
 spam spam spam spam spam spam 
 spam spam spam spam spam spam.</p>
 
-<?php include ('includes/footer.html'); ?>
+<?php include ('includes/footer.php'); ?>

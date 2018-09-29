@@ -15,21 +15,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 	echo var_dump($trimmed);
 
 	// Assume invalid values:
-	$fn = $ln = $e = $p = FALSE;
+	$fn = $e = $p = FALSE;
 	
 	// Check for a first name:
 	if (preg_match ('/^[A-Z \'.-]{2,20}$/i', $trimmed['first_name'])) {
 		$fn = mysqli_real_escape_string ($dbc, $trimmed['first_name']);
 	} else {
-		echo '<p class="error">Please enter your first name!</p>';
+		echo '<p class="error">Please enter your Username!</p>';
 	}
 
-	// Check for a last name:
-	if (preg_match ('/^[A-Z \'.-]{2,40}$/i', $trimmed['last_name'])) {
-		$ln = mysqli_real_escape_string ($dbc, $trimmed['last_name']);
-	} else {
-		echo '<p class="error">Please enter your last name!</p>';
-	}
+	// // Check for a last name:
+	// if (preg_match ('/^[A-Z \'.-]{2,40}$/i', $trimmed['last_name'])) {
+	// 	$ln = mysqli_real_escape_string ($dbc, $trimmed['last_name']);
+	// } else {
+	// 	echo '<p class="error">Please enter your last name!</p>';
+	// }
 	
 	// Check for an email address:
 	if (filter_var($trimmed['email'], FILTER_VALIDATE_EMAIL)) {
@@ -49,10 +49,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 		echo '<p class="error">Please enter a valid password!</p>';
 	}
 	
-	if ($fn && $ln && $e && $p) { // If everything's OK...
+	if ($fn && $e && $p) { // If everything's OK...
 
 		// Make sure the email address is available:
-		$q = "SELECT user_id FROM users WHERE email='$e'";
+		$q = "SELECT user_id FROM users_reg WHERE email='$e'";
 		$r = mysqli_query ($dbc, $q) or trigger_error("Query: $q\n<br />MySQL Error: " . mysqli_error($dbc));
 		
 		if (mysqli_num_rows($r) == 0) { // Available.
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 			$a = md5(uniqid(rand(), true));
 
 			// Add the user to the database:
-			$q = "INSERT INTO users (email, pass, first_name, last_name, active, registration_date) VALUES ('$e', SHA1('$p'), '$fn', '$ln', '$a', NOW() )";
+			$q = "INSERT INTO users_reg(user_name, pass, email, active, registration_date) VALUES ('$fn', SHA1('$p'), '$e', '$a', NOW() )";
 			$r = mysqli_query ($dbc, $q) or trigger_error("Query: $q\n<br />MySQL Error: " . mysqli_error($dbc));
 
 			if (mysqli_affected_rows($dbc) == 1) { // If it ran OK.
@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 				
 				// Finish the page:
 				echo '<h3>Thank you for registering! A confirmation email has been sent to your address. Please click on the link in that email in order to activate your account.</h3>';
-				include ('includes/footer.html'); // Include the HTML footer.
+				include ('includes/footer.php'); // Include the HTML footer.
 				exit(); // Stop the page.
 				
 			} else { // If it did not run OK.
@@ -97,9 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 <form action="register.php" method="post">
 	<fieldset>
 	
-	<p><b>First Name:</b> <input type="text" name="first_name" size="20" maxlength="20" value="<?php if (isset($trimmed['first_name'])) echo $trimmed['first_name']; ?>" /></p>
-	
-	<p><b>Last Name:</b> <input type="text" name="last_name" size="20" maxlength="40" value="<?php if (isset($trimmed['last_name'])) echo $trimmed['last_name']; ?>" /></p>
+	<p><b>Username:</b> <input type="text" name="first_name" size="20" maxlength="20" value="<?php if (isset($trimmed['first_name'])) echo $trimmed['first_name']; ?>" /></p>
 
 	<p><b>Email Address:</b> <input type="text" name="email" size="30" maxlength="60" value="<?php if (isset($trimmed['email'])) echo $trimmed['email']; ?>" /> </p>
 		
@@ -112,4 +110,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 
 </form>
 
-<?php include ('includes/footer.html'); ?>
+<?php include ('includes/footer.php'); ?>

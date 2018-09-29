@@ -7,7 +7,7 @@ echo print_r($_SESSION);
 // If no first_name session variable exists, redirect the user:
 if (!isset($_SESSION['user_id'])) {
 	
-	$url = BASE_URL . 'index.php'; // Define the URL.
+	$url = BASE_URL; // Define the URL.
 	ob_end_clean(); // Delete the buffer.
 	header("Location: $url");
 	exit(); // Quit the script.
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if ($p) { // If everything's OK.
 
 		// Make the query:
-		$q = "UPDATE users SET pass=SHA1('$p') WHERE user_id={$_SESSION['user_id']} LIMIT 1";	
+		$q = "UPDATE users_reg SET pass=SHA1('$p') WHERE user_id={$_SESSION['user_id']} LIMIT 1";	
 		$r = mysqli_query ($dbc, $q) or trigger_error("Query: $q\n<br />MySQL Error: " . mysqli_error($dbc));
 		if (mysqli_affected_rows($dbc) == 1) { // If it ran OK.
 
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			echo '<h3>Your password has been changed.</h3>';
 			echo '<p>An email has been sent to confirm this change.</p>';
 			mysqli_close($dbc); // Close the database connection.
-			include ('includes/footer.html'); // Include the HTML footer.
+			include ('includes/footer.php'); // Include the HTML footer.
 			exit();
 			
 		} else { // If it did not run OK.
@@ -90,4 +90,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<div align="center"><input type="submit" name="submit" value="Change My Password" /></div>
 </form>
 
-<?php include ('includes/footer.html'); ?>
+<?php include ('includes/footer.php'); ?>

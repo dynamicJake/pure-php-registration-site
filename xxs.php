@@ -35,6 +35,6 @@ function test_input($data) {
 
 echo $hack;
 
-include('includes/footer.html');
+include('includes/footer.php');
 
 ?>

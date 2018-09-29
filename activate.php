@@ -12,7 +12,7 @@ if (isset($_GET['x'], $_GET['y'])
 
 	// Update the database...
 	require (MYSQL);
-	$q = "UPDATE users SET active=NULL WHERE (email='" . mysqli_real_escape_string($dbc, $_GET['x']) . "' AND active='" . mysqli_real_escape_string($dbc, $_GET['y']) . "') LIMIT 1";
+	$q = "UPDATE users_reg SET active=NULL WHERE (email='" . mysqli_real_escape_string($dbc, $_GET['x']) . "' AND active='" . mysqli_real_escape_string($dbc, $_GET['y']) . "') LIMIT 1";
 	$r = mysqli_query ($dbc, $q) or trigger_error("Query: $q\n<br />MySQL Error: " . mysqli_error($dbc));
 	
 	// Print a customized message:
@@ -33,5 +33,5 @@ if (isset($_GET['x'], $_GET['y'])
 
 } // End of main IF-ELSE.
 
-include ('includes/footer.html');
+include ('includes/footer.php');
 ?>

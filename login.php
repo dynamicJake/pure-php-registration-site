@@ -8,8 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	require (MYSQL);
 	
 	// Validate the email address:
-	if (!empty($_POST['email'])) {
-		$e = mysqli_real_escape_string ($dbc, $_POST['email']);
+	if (!empty($_POST['username'])) {
+		$e = mysqli_real_escape_string ($dbc, $_POST['username']);
 	} else {
 		$e = FALSE;
 		echo '<p class="error">You forgot to enter your email address!</p>';
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if ($e && $p) { // If everything's OK.
 
 		// Query the database:
-		$q = "SELECT user_id, first_name, user_level, email FROM users WHERE (email='$e' AND pass=SHA1('$p')) AND active IS NULL";		
+		$q = "SELECT user_id, user_name, user_level, email FROM users_reg WHERE (user_name='$e' AND pass=SHA1('$p')) AND active IS NULL";		
 		$r = mysqli_query ($dbc, $q) or trigger_error("Query: $q\n<br />MySQL Error: " . mysqli_error($dbc));
 		
 		if (@mysqli_num_rows($r) == 1) { // A match was made.
@@ -59,10 +59,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <p class="error">Your browser must allow cookies in order to log in.</p>
 <form action="login.php" method="post">
 	<fieldset>
-	<input placeholder="Email Address" type="text" name="email" size="20" maxlength="60" /></p>
+	<input placeholder="Username" type="text" name="username" size="20" maxlength="60" /></p>
 	<input placeholder="Password" type="password" name="pass" size="20" maxlength="20" /></p>
 	<div align="center"><input type="submit" name="submit" value="Login" /></div>
 	</fieldset>
 </form>
 
-<?php include ('includes/footer.html'); ?>
+<?php include ('includes/footer.php'); ?>

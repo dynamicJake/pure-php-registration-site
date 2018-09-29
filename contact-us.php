@@ -76,7 +76,7 @@ echo '!</h1>';
 
 </div> <!-- End of Content -->
 
-<?php include ('includes/footer.html'); ?>
+<?php include ('includes/footer.php'); ?>
 
 </body>
 </html>

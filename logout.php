@@ -5,7 +5,7 @@ $page_title = 'Logout';
 include ('includes/header.html');
 
 // If no first_name session variable exists, redirect the user:
-if (!isset($_SESSION['first_name'])) {
+if (!isset($_SESSION['user_name'])) {
 
 	$url = BASE_URL; // Define the URL.
 	ob_end_clean(); // Delete the buffer.
@@ -23,5 +23,5 @@ if (!isset($_SESSION['first_name'])) {
 // Print a customized message:
 echo '<h3>You are now logged out.</h3>';
 
-include ('includes/footer.html');
+include ('includes/footer.php');
 ?>
