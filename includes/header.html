@@ -1,0 +1,27 @@
+<?php # Script 18.1 - header.html
+// This page begins the HTML header for the site.
+
+// Start output buffering:
+ob_start();
+
+// Initialize a session:
+session_start();
+
+// Check for a $page_title value:
+if (!isset($page_title)) {
+	$page_title = 'User Registration';
+}
+?>
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="favicon.png" />
+	<title><?php echo $page_title; ?></title>
+	<link rel="stylesheet" type="text/css" href="includes/layout.css">
+</head>
+<body>
+<div id="Header">User Registration</div>
+<div id="Content">
+<!-- End of Header -->
