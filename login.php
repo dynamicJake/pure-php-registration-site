@@ -2,7 +2,7 @@
 // This is the login page for the site.
 require ('includes/config.new.php'); 
 $page_title = 'Login';
-include ('includes/header.html');
+include ('includes/header.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	require (MYSQL);
@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$e = mysqli_real_escape_string ($dbc, $_POST['username']);
 	} else {
 		$e = FALSE;
-		echo '<p class="error">You forgot to enter your email address!</p>';
+		echo '<p class="error">Please enter your username!</p>';
 	}
 	
 	// Validate the password:

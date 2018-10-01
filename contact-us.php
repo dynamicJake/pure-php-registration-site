@@ -31,8 +31,8 @@ if (isset($_POST['submit'])) {
 	try {
 	
 		//Recipients
-		$mail->setFrom(EMAIL, 'PHPMailer Jake');
-		$mail->addAddress(SITE_EMAIL, 'Registration Site');     // Add a recipient
+		$mail->setFrom('site@registration.local', 'PHPMailer Jake');
+		$mail->addAddress($email, 'Registration Site');     // Add a recipient
 	
 		//Content
 		$mail->isHTML(true);                                  // Set email format to HTML
@@ -49,12 +49,12 @@ if (isset($_POST['submit'])) {
 
 // Set the page title and include the HTML header:
 $page_title = 'Contact Us';
-include ('includes/header.html');
+include ('includes/header.php');
 
 // Welcome the user (by name if they are logged in):
 echo '<h1>Let us hear from you';
-if (isset($_SESSION['first_name'])) {
-	echo " {$_SESSION['first_name']}";
+if (isset($_SESSION['user_name'])) {
+	echo " {$_SESSION['user_name']}";
 }
 echo '!</h1>';
 ?>

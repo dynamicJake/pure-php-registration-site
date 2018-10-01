@@ -83,15 +83,27 @@ body>#Header {height:14px;}
 /* forms */
 
 body {font-family: Arial, Helvetica, sans-serif;}
-form {border: 3px solid #f1f1f1;}
+form {
+	border: 3px solid #f1f1f1;
+	padding: 18px;
+}
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password],
+input[type=email] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+}
+
+input[type="submit"] {
+    border: none;
+    width: 100px;
+    padding: 8px 0px;
+    background-color: #0386b9;
+    font-weight: bold;
 }
 
 button {

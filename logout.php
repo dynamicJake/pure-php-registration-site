@@ -2,9 +2,9 @@
 // This is the logout page for the site.
 require ('includes/config.new.php'); 
 $page_title = 'Logout';
-include ('includes/header.html');
+include ('includes/header.php');
 
-// If no first_name session variable exists, redirect the user:
+// If no user_name session variable exists, redirect the user:
 if (!isset($_SESSION['user_name'])) {
 
 	$url = BASE_URL; // Define the URL.

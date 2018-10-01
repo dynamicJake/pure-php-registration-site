@@ -2,7 +2,7 @@
 // This page allows a user to reset their password, if forgotten.
 require ('includes/config.new.php'); 
 $page_title = 'Forgot Your Password';
-include ('includes/header.html');
+include ('includes/header.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	require (MYSQL);

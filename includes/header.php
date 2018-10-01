@@ -1,4 +1,4 @@
-<?php # Script 18.1 - header.html
+<?php # Script 18.1 - header.php
 // This page begins the HTML header for the site.
 
 // Start output buffering:
@@ -22,6 +22,21 @@ if (!isset($page_title)) {
 	<link rel="stylesheet" type="text/css" href="includes/layout.css">
 </head>
 <body>
-<div id="Header">User Registration</div>
+<div id="Header">User Registration
+
+	<div style="float:right; font-size:14px; padding-right:15px;" id="userbar">
+		<?php
+			if(isset($_SESSION['user_name'])) {
+				echo 'Hello' . $_SESSION['user_name'] . '. Not you? <a href="logout.php">Sign out</a>';
+			}
+			else
+			{
+				echo '<a href="login.php">Sign in</a> or <a href="register.php">Register</a>';
+			}
+		?>
+	</div>
+</div>
 <div id="Content">
+
+
 <!-- End of Header -->

@@ -2,10 +2,10 @@
 // This page allows a logged-in user to change their password.
 require ('includes/config.new.php'); 
 $page_title = 'Change Your Password';
-include ('includes/header.html');
+include ('includes/header.php');
 echo print_r($_SESSION);
-// If no first_name session variable exists, redirect the user:
-if (!isset($_SESSION['user_id'])) {
+// If no user_name session variable exists, redirect the user:
+if (!isset($_SESSION['user_name'])) {
 	
 	$url = BASE_URL; // Define the URL.
 	ob_end_clean(); // Delete the buffer.

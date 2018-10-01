@@ -2,7 +2,7 @@
 // This is the registration page for the site.
 require ('includes/config.new.php');
 $page_title = 'Register';
-include ('includes/header.html');
+include ('includes/header.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 
@@ -15,11 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 	echo var_dump($trimmed);
 
 	// Assume invalid values:
-	$fn = $e = $p = FALSE;
+	$un = $e = $p = FALSE;
 	
-	// Check for a first name:
-	if (preg_match ('/^[A-Z \'.-]{2,20}$/i', $trimmed['first_name'])) {
-		$fn = mysqli_real_escape_string ($dbc, $trimmed['first_name']);
+	// Check for a username:
+	if ($trimmed['user_name']) {
+		$un = mysqli_real_escape_string ($dbc, $trimmed['user_name']);
 	} else {
 		echo '<p class="error">Please enter your Username!</p>';
 	}
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 		echo '<p class="error">Please enter a valid password!</p>';
 	}
 	
-	if ($fn && $e && $p) { // If everything's OK...
+	if ($un && $e && $p) { // If everything's OK...
 
 		// Make sure the email address is available:
 		$q = "SELECT user_id FROM users_reg WHERE email='$e'";
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 			$a = md5(uniqid(rand(), true));
 
 			// Add the user to the database:
-			$q = "INSERT INTO users_reg(user_name, pass, email, active, registration_date) VALUES ('$fn', SHA1('$p'), '$e', '$a', NOW() )";
+			$q = "INSERT INTO users_reg(user_name, pass, email, active, registration_date) VALUES ('$un', SHA1('$p'), '$e', '$a', NOW() )";
 			$r = mysqli_query ($dbc, $q) or trigger_error("Query: $q\n<br />MySQL Error: " . mysqli_error($dbc));
 
 			if (mysqli_affected_rows($dbc) == 1) { // If it ran OK.
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 <form action="register.php" method="post">
 	<fieldset>
 	
-	<p><b>Username:</b> <input type="text" name="first_name" size="20" maxlength="20" value="<?php if (isset($trimmed['first_name'])) echo $trimmed['first_name']; ?>" /></p>
+	<p><b>Username:</b> <input type="text" name="user_name" size="20" maxlength="20" value="<?php if (isset($trimmed['user_name'])) echo $trimmed['user_name']; ?>" /></p>
 
 	<p><b>Email Address:</b> <input type="text" name="email" size="30" maxlength="60" value="<?php if (isset($trimmed['email'])) echo $trimmed['email']; ?>" /> </p>
 		

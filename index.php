@@ -6,7 +6,7 @@ require ('includes/config.new.php');
 
 // Set the page title and include the HTML header:
 $page_title = 'Welcome to this Site!';
-include ('includes/header.html');
+include ('includes/header.php');
 
 // Welcome the user (by name if they are logged in):
 echo '<h1>Welcome';
