@@ -93,19 +93,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form.
 } // End of the main Submit conditional.
 ?>
 	
-<h1>Register</h1>
+<h2>Register</h2>
 <form action="register.php" method="post">
-	<fieldset>
-	
-	<p><b>Username:</b> <input type="text" name="user_name" size="20" maxlength="20" value="<?php if (isset($trimmed['user_name'])) echo $trimmed['user_name']; ?>" /></p>
-
-	<p><b>Email Address:</b> <input type="text" name="email" size="30" maxlength="60" value="<?php if (isset($trimmed['email'])) echo $trimmed['email']; ?>" /> </p>
-		
-	<p><b>Password:</b> <input type="password" name="password1" size="20" maxlength="20" value="<?php if (isset($trimmed['password1'])) echo $trimmed['password1']; ?>" /> <small>Use only letters, numbers, and the underscore. Must be between 4 and 20 characters long.</small></p>
-
-	<p><b>Confirm Password:</b> <input type="password" name="password2" size="20" maxlength="20" value="<?php if (isset($trimmed['password2'])) echo $trimmed['password2']; ?>" /></p>
-	</fieldset>
-	
+	<p>
+		<strong>Username:</strong> 
+		<input type="text" name="user_name" size="20" maxlength="20" value="<?php if (isset($trimmed['user_name'])) echo $trimmed['user_name']; ?>" />
+	</p>
+	<p>
+		<strong>Email Address:</strong> 
+		<input type="text" name="email" size="30" maxlength="60" value="<?php if (isset($trimmed['email'])) echo $trimmed['email']; ?>" /> 
+	</p>
+	<p>
+		<strong>Password:</strong>
+		<input type="password" name="password1" size="20" maxlength="20" value="<?php if (isset($trimmed['password1'])) echo $trimmed['password1']; ?>" /> 
+		<small class="warn">
+			Use only letters, numbers, and the underscore. Must be between 4 and 20 characters long.
+		</small>
+	</p>
+	<p>
+		<strong>Confirm Password:</strong>
+		<input type="password" name="password2" size="20" maxlength="20" value="<?php if (isset($trimmed['password2'])) echo $trimmed['password2']; ?>" />
+	</p>
 	<div align="center"><input type="submit" name="submit" value="Register" /></div>
 
 </form>

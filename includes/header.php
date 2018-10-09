@@ -20,23 +20,24 @@ if (!isset($page_title)) {
 	<link rel="icon" type="image/x-icon" href="favicon.png" />
 	<title><?php echo $page_title; ?></title>
 	<link rel="stylesheet" type="text/css" href="includes/layout.css">
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'/>
 </head>
 <body>
-<div id="Header">User Registration
-
+<div id="header">
+	<h1>Registration</h1>
 	<div style="float:right; font-size:14px; padding-right:15px;" id="userbar">
 		<?php
 			if(isset($_SESSION['user_name'])) {
-				echo 'Hello' . $_SESSION['user_name'] . '. Not you? <a href="logout.php">Sign out</a>';
+				echo '<p>Hello ' . $_SESSION['user_name'] . '. Not you? <a href="logout.php">Sign out</a></p>';
 			}
 			else
 			{
-				echo '<a href="login.php">Sign in</a> or <a href="register.php">Register</a>';
+				echo '<p><a href="login.php">Sign in</a> or <a href="register.php">Register</a></p>';
 			}
 		?>
 	</div>
 </div>
-<div id="Content">
+<div id="content">
 
 
 <!-- End of Header -->

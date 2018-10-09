@@ -1,6 +1,5 @@
 #
 
 # Begin Ignorance
-/node_modules/*/*/*
-/node_modules
+/node_modules/
 /vendor/

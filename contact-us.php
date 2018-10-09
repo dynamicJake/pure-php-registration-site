@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
 	// echo htmlspecialchars($message);
 	// $message= strip_tags($message, '<p><br><strong><l><ul>');
 	$message = removeTagsWithTheirContent($tagsToRemove, $message, $subject);
-	echo $message;
+	// echo $message;
 
 	$mail = new PHPMailer(true);                             // Passing `true` enables exceptions
 	try {
@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
 		$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 	
 		$mail->send();
-		$msg = '<p>Thank you, your message has been sent!</p>';
+		$msg = '<p class="success">Thank you, your message has been sent!</p>';
 	} catch (Exception $e) {
 		$msg = '<p>Message could not be sent.</p>';
 	}
@@ -52,11 +52,11 @@ $page_title = 'Contact Us';
 include ('includes/header.php');
 
 // Welcome the user (by name if they are logged in):
-echo '<h1>Let us hear from you';
+echo '<h2>Let us hear from you';
 if (isset($_SESSION['user_name'])) {
 	echo " {$_SESSION['user_name']}";
 }
-echo '!</h1>';
+echo '!</h2>';
 ?>
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 		incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
@@ -69,7 +69,7 @@ echo '!</h1>';
 	<form action="<?php echo htmlspecialchars('contact-us.php'); ?>" method="post">
 		<input placeholder="Subject..." type="text" name="subject" size="20" maxlength="60" /><br>
 		<input placeholder="Email..." type="email" name="email" /><br>
-		<textarea name="message"></textarea><br>
+		<textarea placeholder="Your message.." name="message"></textarea><br>
 		<!-- <input type="file" name="attachment"><br> -->
 		<div align="center"><input type="submit" name="submit" value="Send Message" /></div>
 	</form>

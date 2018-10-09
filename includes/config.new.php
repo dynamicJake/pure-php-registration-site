@@ -37,6 +37,10 @@ date_default_timezone_set ('US/Eastern');
 
 // TODO: replace mail() function with phpmailer for reliability. 
 
+
+
+
+if(!function_exists("myErrorHandler")) {
 // error handler function
 function myErrorHandler($e_number, $e_message, $e_file, $e_line, $e_vars) {
 
@@ -103,9 +107,10 @@ function myErrorHandler($e_number, $e_message, $e_file, $e_line, $e_vars) {
     return true;
 }
 
-
-// Use my error handler:
-set_error_handler ('myErrorHandler');
+set_error_handler("myErrorHandler");
+ } else {
+    // it already exists, do something else
+ }
 
 // ************ ERROR MANAGEMENT ************ //
 // ****************************************** //
@@ -113,28 +118,28 @@ set_error_handler ('myErrorHandler');
 
 // Testing error handling!!!!
 // function to test the error handling
-function scale_by_log($vect, $scale)
-{
-    if (!is_numeric($scale) || $scale <= 0) {
-        trigger_error("log(x) for x <= 0 is undefined, you used: scale = $scale", E_USER_ERROR);
-    }
+// function scale_by_log($vect, $scale)
+// {
+//     if (!is_numeric($scale) || $scale <= 0) {
+//         trigger_error("log(x) for x <= 0 is undefined, you used: scale = $scale", E_USER_ERROR);
+//     }
 
-    if (!is_array($vect)) {
-        trigger_error("Incorrect input vector, array of values expected", E_USER_WARNING);
-        return null;
-    }
+//     if (!is_array($vect)) {
+//         trigger_error("Incorrect input vector, array of values expected", E_USER_WARNING);
+//         return null;
+//     }
 
-    $temp = array();
-    foreach($vect as $pos => $value) {
-        if (!is_numeric($value)) {
-            trigger_error("Value at position $pos is not a number, using 0 (zero)", E_USER_NOTICE);
-            $value = 0;
-        }
-        $temp[$pos] = log($scale) * $value;
-    }
+//     $temp = array();
+//     foreach($vect as $pos => $value) {
+//         if (!is_numeric($value)) {
+//             trigger_error("Value at position $pos is not a number, using 0 (zero)", E_USER_NOTICE);
+//             $value = 0;
+//         }
+//         $temp[$pos] = log($scale) * $value;
+//     }
 
-    return $temp;
-}
+//     return $temp;
+// }
 
 // set to the user defined error handler
 $old_error_handler = set_error_handler("myErrorHandler");

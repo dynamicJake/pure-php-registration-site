@@ -1,5 +1,5 @@
 <?php
-include 'includes/config.new.php';
+
 
 // Form input validator
 function test_input($data) {

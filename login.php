@@ -55,14 +55,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } // End of SUBMIT conditional.
 ?>
 
-<h1>Login</h1>
-<p class="error">Your browser must allow cookies in order to log in.</p>
+<h2>Login</h2>
 <form action="login.php" method="post">
-	<fieldset>
-	<input placeholder="Username" type="text" name="username" size="20" maxlength="60" /></p>
-	<input placeholder="Password" type="password" name="pass" size="20" maxlength="20" /></p>
+	<p>
+		<strong>Username:</strong>
+		<input type="text" name="username" size="20" maxlength="60" /></p>
+	</p>
+	<p>
+		<strong>Password:</strong>
+		<input type="password" name="pass" size="20" maxlength="20" /></p>
+	</p>
+	
+	<p align="center" class="warn">Your browser must allow cookies in order to log in.</p>
 	<div align="center"><input type="submit" name="submit" value="Login" /></div>
-	</fieldset>
 </form>
 
 <?php include ('includes/footer.php'); ?>

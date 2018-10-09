@@ -3,7 +3,7 @@
 require ('includes/config.new.php'); 
 $page_title = 'Change Your Password';
 include ('includes/header.php');
-echo print_r($_SESSION);
+
 // If no user_name session variable exists, redirect the user:
 if (!isset($_SESSION['user_name'])) {
 	
@@ -81,12 +81,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } // End of the main Submit conditional.
 ?>
 
-<h1>Change Your Password</h1>
+<h2>Change Your Password</h2>
 <form action="change_password.php" method="post">
-	<fieldset>
-	<p><b>New Password:</b> <input type="password" name="password1" size="20" maxlength="20" /> <small>Use only letters, numbers, and the underscore. Must be between 4 and 20 characters long.</small></p>
-	<p><b>Confirm New Password:</b> <input type="password" name="password2" size="20" maxlength="20" /></p>
-	</fieldset>
+	<p>
+		<b>New Password:</b>
+		<input type="password" name="password1" size="20" maxlength="20" /> 
+		<small class="warn">
+			Use only letters, numbers, and the underscore. Must be between 4 and 20 characters long.
+		</small>
+	</p>
+	<p>
+		<b>Confirm New Password:</b>
+		<input type="password" name="password2" size="20" maxlength="20" />
+	</p>
 	<div align="center"><input type="submit" name="submit" value="Change My Password" /></div>
 </form>
 

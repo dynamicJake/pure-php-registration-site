@@ -6,10 +6,7 @@ require ('includes/config.new.php');
 // Set the page title and include the HTML header:
 $page_title = 'Welcome to this Site!';
 include('includes/header.php');
-/**
- * Check if the 'id' GET variable is set
- * Example - http://localhost/?id=1
- */
+
 $hack = '<script>';
 $hack .= 'alert("message successfully sent");';
 $hack .= '</script>'; 

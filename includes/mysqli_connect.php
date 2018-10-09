@@ -10,7 +10,7 @@ DEFINE ('DB_HOST', 'localhost');
 DEFINE ('DB_NAME', 'registration_db');
 
 // Make the connection:
-$dbc = @mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
 // If no connection could be made, trigger an error:
 if (!$dbc) {
