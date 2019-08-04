@@ -1,44 +1,27 @@
-<?php # Script 18.3 - config.inc.php
-/* This script:
- * - define constants and settings
- * - dictates how errors are handled
- * - defines useful functions
- */
- 
-// Jacob Jauregui
-
+<?php 
 
 // ********************************** //
 // ************ SETTINGS ************ //
 
 // Flag variable for site status:
-define('LIVE', TRUE);
+    define('LIVE', true);
 
-// Admin contact address:
-define('EMAIL', 'jacob@signamarketing.com');
-
-define('SITE_EMAIL', 'From: site@registration.local');
-
-// Site URL (base for all redirections):
-define ('BASE_URL', 'http://registration.local/');
-
-// Location of the MySQL connection script:
-define ('MYSQL', 'includes/mysqli_connect.php');
-
-// Adjust the time zone for PHP 5.1 and greater:
-date_default_timezone_set ('US/Eastern');
-
+    // Admin contact address:
+    define('EMAIL', 'jaureguijacob57@gmail.com');
+    
+    define('SITE_EMAIL', 'From: site@registration.local');
+    
+    // Site URL (base for all redirections):
+    define ('BASE_URL', 'http://registration.local/');
+    
+    // Location of the MySQL connection script:
+    define ('MYSQL', 'includes/mysqli_connect.php');
+    
+    // Adjust the time zone for PHP 5.1 and greater:
+    date_default_timezone_set ('US/Eastern');
+    
 // ************ SETTINGS ************ //
 // ********************************** //
-
-
-// ****************************************** //
-// ************ ERROR MANAGEMENT ************ //
-
-
-// TODO: replace mail() function with phpmailer for reliability. 
-
-
 
 
 
@@ -119,5 +102,7 @@ function mylog($error, $errlvl)
 
 // ************ Error Handling ************ //
 // **************************************** //
+
+
 
 ?>

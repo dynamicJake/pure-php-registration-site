@@ -1,10 +1,8 @@
 <?php # Script 18.5 - index.php
 // This is the main page for the site.
 
-// Include the configuration file:
 include ('includes/config.new.php'); 
 
-// Set the page title and include the HTML header:
 $page_title = 'Welcome to this Site!';
 include ('includes/header.php');
 
@@ -42,7 +40,9 @@ if (isset($_SESSION['user_name'])) {
 
 
 } else { 	// User is not logged in 
-	echo '!</h2>'; ?>
+	echo '!</h2>'; 
+	echo $b;
+	?>
 	<p>Try <a href="login.php" title="Login">logging in</a> or <a href="register" title="Sign up">signing up</a> to start viewing the forums!</p>
 <?php
 }

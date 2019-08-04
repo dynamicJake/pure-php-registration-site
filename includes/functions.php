@@ -17,6 +17,14 @@ function test_input($data) {
 * @param $haystack String to cleanup
 * @param $formTitle String of the form subject line submitted (optional)
 * @return string
+
+
+    SAMPLE USAGE: 
+        $tagsToRemove = array('script', 'b');
+        $subject = test_input($_POST['subject']);
+        $message = '<p>'. nl2br($_POST['message']) . '</p>';
+        $message = removeTagsWithTheirContent($tagsToRemove, $message, $subject);
+        // echo $message;
 */
 function removeTagsWithTheirContent(array $tagsToRemove, $haystack, $formTitle = null) {
 

@@ -67,9 +67,9 @@ div#userbar {
 
 #content {
     margin: 0 auto;
-	padding: 20px;
-    max-width: 860px;
-    width: calc(100% - 232px);
+	padding: 20px 20px 60px;
+    max-width: 100%;
+    width: 862px;
 }
 
 #menu {
@@ -258,6 +258,7 @@ span.psw {
     background-color: white;
     box-shadow: 1px 1px 3px;
     align-items: center;
+    margin-top: 20px;
 }
 
 .item h3 {
